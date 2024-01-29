@@ -1,11 +1,15 @@
 import express from "express";
 import mongoose from "mongoose";
+import cors from 'cors'
 
 const app = express();
 const mongodbConnection = await mongoose.connect("mongodb://localhost:27017/testDb2");
 const userCollection = mongoose.connection.collection("users");
 
 app.use(express.json());
+app.use(cors({
+    origin:["*", "http://localhost:5173/", "test-project-client.remin.in"]
+}))
 
 app.post("/create-user", async (req, res) => {
   const { name, email } = req.body;
