@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 
 const app = express();
-const mongodbConnection = await mongoose.connect("mongodb://localhost:27019/testDb2");
+const mongodbConnection = await mongoose.connect("mongodb://localhost:27017/testDb2");
 const userCollection = mongoose.connection.collection("users");
 
 app.use(express.json());
